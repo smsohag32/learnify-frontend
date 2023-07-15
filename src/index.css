@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+
+.default-container{
+  @apply max-w-[2520px] w-full mx-auto xl:px-20 md:px-10 sm:px-2 px-4
+}
+
+.primary-btn{
+  @apply bg-[#00a8e8] text-white px-3 py-3 font-semibold hover:bg-[#0087a3]
+}
+
+.primary-input {
+  @apply w-full border border-gray-300 focus:outline-none focus:border-[#00a8e8] px-4 py-2
+}
+
+.primary-text{
+  @apply text-[#00a8e8]
+}
+
+.outline-btn{
+  @apply px-5 py-2 border border-[#00a8e8] hover:bg-[#00a8e8] hover:text-white text-[#00a8e8] font-semibold
+}

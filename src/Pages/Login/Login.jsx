@@ -33,11 +33,13 @@ const Login = () => {
         console.log(data.data);
         if (data?.data?.data?.token) {
           localStorage.setItem("access-token", data.data.data.token);
+          localStorage.setItem("position", data.data.data.position);
           navigate(from, { replace: true });
           setLoading(false);
         } else {
           // remove to when user not found
           localStorage.removeItem("access-token");
+          localStorage.removeItem("position");
           setLoading(false);
         }
       })

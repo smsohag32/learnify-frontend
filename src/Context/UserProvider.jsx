@@ -1,6 +1,6 @@
 // UserProvider.js
-import React, { createContext, useEffect, useState, useContext } from "react";
-import useSecureAuth from "./useSecureAuth"; // Assuming this hook handles API authentication
+import { createContext, useEffect, useState, useContext } from "react";
+import useSecureAuth from "../Hooks/useSecureAuth";
 
 export const UserContext = createContext();
 
@@ -14,10 +14,9 @@ const UserProvider = ({ children }) => {
     const fetchUser = async () => {
       try {
         const res = await secureAuth.get("/api/v1/user/details");
-        setUser(res.data);
+        setUser(res.data.user_data);
         setLoading(false);
       } catch (error) {
-        setLoading(false);
         // Handle any errors
       } finally {
         setLoading(false);

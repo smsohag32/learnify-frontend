@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 const StepTwo = ({ onNext, userInfo }) => {
   const [isShow, setIsShow] = useState(false);
   const [registerErr, setRegisterErr] = useState("");
+  const [loading, setLoading] = useState(false);
   const {
     register,
     handleSubmit,
@@ -33,10 +34,17 @@ const StepTwo = ({ onNext, userInfo }) => {
 
       userRegister(userData)
         .then((data) => {
-          console.log(data);
-          if (data?.data?.message.includes("successfully")) {
-            onNext();
+          if (data?.data?.data?.token) {
+            localStorage.setItem("access-token", data.data.data.token);
+            localStorage.setItem("position", data.data.data.position);
+            setLoading(false);
+          } else {
+            // remove to when user not found
+            localStorage.removeItem("access-token");
+            localStorage.removeItem("position");
+            setLoading(false);
           }
+          onNext();
         })
         .catch((err) => {
           console.log(err);

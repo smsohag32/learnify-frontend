@@ -30,8 +30,9 @@ const Login = () => {
         password,
       })
       .then((data) => {
-        if (data?.data?.token) {
-          localStorage.setItem("access-token", data.data.token);
+        console.log(data.data);
+        if (data?.data?.data?.token) {
+          localStorage.setItem("access-token", data.data.data.token);
           navigate(from, { replace: true });
           setLoading(false);
         } else {

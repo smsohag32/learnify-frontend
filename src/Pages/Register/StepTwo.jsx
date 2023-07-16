@@ -44,7 +44,6 @@ const StepTwo = ({ onNext, userInfo }) => {
         });
     }
   };
-
   return (
     <div className="w-full max-w-xl p-6 mx-auto bg-white rounded shadow-md">
       <h4 className="font-medium text-xl text-center">Security</h4>

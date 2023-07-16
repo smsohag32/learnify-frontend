@@ -1,5 +1,4 @@
-import React from "react";
-import useUser from "../../../Hooks/useUsers";
+import useUser from "../../../Hooks/useUser";
 
 const TeacherDashboard = () => {
   const { user } = useUser();

@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 // base url
 const secureAuth = axios.create({
-  baseURL: "https://sports-haven-backend.vercel.app/",
+  baseURL: "https://job-task-server.onrender.com",
 });
 
 // access token send to server and secure to apis
@@ -24,11 +24,9 @@ const useSecureAuth = () => {
       async (err) => {
         if (
           err.response &&
-          (err.response.status === 401 || err.response.status === 403)
+          (err.response.status === 500 || err.response.status === 403)
         ) {
-          //   await logOut();
-          //   setLoading(false);
-          navigate("/login");
+          navigate("/");
         }
         return Promise.reject(err);
       }

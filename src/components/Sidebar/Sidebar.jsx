@@ -10,18 +10,10 @@ const Sidebar = () => {
   const { user } = useUser();
   console.log(user);
   const [isOpen, setIsOpen] = useState("false");
-  const navigate = useNavigate();
   const isTeacher = false;
   // Sidebar Responsive Handler
   const handleToggle = () => {
     setIsOpen(!isOpen);
-  };
-
-  // handle logout
-  const handleLogOut = () => {
-    localStorage.removeItem("position");
-    localStorage.removeItem("access-token");
-    navigate("/");
   };
 
   return (
@@ -61,15 +53,6 @@ const Sidebar = () => {
           <div className="flex flex-col justify-between flex-1 mt-6">
             <nav>{isTeacher ? <TeacherLink /> : <StudentLink />}</nav>
           </div>
-        </div>
-        <div>
-          <button
-            onClick={handleLogOut}
-            className="flex w-full text-white items-center px-4 py-2 mt-5  hover:bg-[#418CD1] hover:text-white transition-colors duration-300 transform"
-          >
-            <GrLogout color="#ffff" className="w-5 text-white h-5" />
-            <span className="mx-4 font-medium">Logout</span>
-          </button>
         </div>
       </div>
     </>

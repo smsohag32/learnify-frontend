@@ -3,6 +3,7 @@ import MainLayout from "../Layouts/MainLayout";
 import DashboardLayout from "../Layouts/DashboardLayout";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
+import Overview from "../Pages/Dashboard/Student/Overview";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,12 @@ const router = createBrowserRouter([
   {
     path: "dashboard",
     element: <DashboardLayout />,
+    children: [
+      {
+        path: "/dashboard",
+        element: <Overview />,
+      },
+    ],
   },
 ]);
 

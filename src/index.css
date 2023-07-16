@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-
+body{
+  @apply bg-[#F7F9FA]
+}
 
 
 .default-container{
@@ -23,4 +25,22 @@
 
 .outline-btn{
   @apply px-5 py-2 border border-[#00a8e8] hover:bg-[#00a8e8] hover:text-white text-[#00a8e8] font-semibold
+}
+
+.primary-link {
+  @apply text-gray-200
+}
+
+.primary-link:hover {
+  @apply transition-all duration-200 hover:bg-neutral-200 hover:bg-opacity-30 backdrop-blur-lg 
+}
+.active-link {
+  @apply bg-neutral-200 bg-opacity-30 backdrop-blur-lg text-white
+}
+
+.primary-shadow{
+  background: white;
+    box-shadow: 0 4px 6px -1px rgba(24, 138, 186, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border-radius: 8px;
+    padding: 16px;
 }

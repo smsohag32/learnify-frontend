@@ -1,12 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
 import successImage from "../../assets/animation/success.json";
-const StepThree = ({ onNext }) => {
+const StepThree = () => {
   const navigate = useNavigate();
   // handle to confirmation
   const handleConfirmation = () => {
     navigate("/dashboard");
-    onNext();
   };
   return (
     <div className="w-full max-w-xl p-6 mx-auto bg-white rounded shadow-md">

@@ -1,20 +1,48 @@
 import { useForm } from "react-hook-form";
 import EyeIconButton from "../../components/Button/EyeButton";
 import { useState } from "react";
+import userRegister from "../../utils/userRegister";
+import { Link } from "react-router-dom";
 
-const StepTwo = ({ onNext }) => {
+const StepTwo = ({ onNext, userInfo }) => {
   const [isShow, setIsShow] = useState(false);
+  const [registerErr, setRegisterErr] = useState("");
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
     watch,
   } = useForm();
   const password = watch("password", "");
 
-  const handleRegister = (userInfo) => {
-    onNext();
+  // handle user register
+  const handleRegister = (passwordInfo) => {
+    setRegisterErr("");
+    // check to step one information and make a obj
+    if (typeof userInfo == "object") {
+      const userData = {
+        full_name: userInfo?.full_name,
+        email: userInfo?.email,
+        position: userInfo?.position,
+        institution_name: userInfo?.institution_name,
+        education_level: userInfo?.education_level,
+        work_time: userInfo?.work_time,
+        password: passwordInfo?.password,
+        confirm_password: passwordInfo?.confirm_password,
+      };
+
+      userRegister(userData)
+        .then((data) => {
+          console.log(data);
+          if (data?.data?.message.includes("successfully")) {
+            onNext();
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          setRegisterErr(err?.message);
+        });
+    }
   };
 
   return (
@@ -63,6 +91,16 @@ const StepTwo = ({ onNext }) => {
             </span>
           )}
         </div>
+        {registerErr && (
+          <div className="text-center text-red-600 mt-4">
+            <p className="flex gap-1">
+              <small>{registerErr}</small>
+              <Link to="/" className="primary-text font-bold">
+                Try again
+              </Link>
+            </p>
+          </div>
+        )}
         <button type="submit" className="primary-btn w-full mt-6 mx-auto">
           Next
         </button>

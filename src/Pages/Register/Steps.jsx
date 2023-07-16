@@ -8,7 +8,7 @@ const Steps = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [stepOneCompleted, setStepOneCompleted] = useState(false);
   const [stepTwoCompleted, setStepTwoCompleted] = useState(false);
-
+  const [userInfo, setUserInfo] = useState(null);
   // handle step next step
   const handleNext = () => {
     setCurrentStep((prevStep) => prevStep + 1);
@@ -27,12 +27,24 @@ const Steps = () => {
     {
       title: "Information",
       completed: stepOneCompleted,
-      component: <StepOne onNext={handleStepOneComplete} />,
+      component: (
+        <StepOne
+          userInfo={userInfo}
+          setUserInfo={setUserInfo}
+          onNext={handleStepOneComplete}
+        />
+      ),
     },
     {
       title: "Security",
       completed: stepTwoCompleted,
-      component: <StepTwo onNext={handleStepTwoComplete} />,
+      component: (
+        <StepTwo
+          userInfo={userInfo}
+          setUserInfo={setUserInfo}
+          onNext={handleStepTwoComplete}
+        />
+      ),
     },
     {
       title: "Confirmation",
@@ -40,11 +52,6 @@ const Steps = () => {
       component: <StepThree />,
     },
   ];
-
-  // handle click steps
-  const handleStepClick = (stepIndex) => {
-    setCurrentStep(stepIndex);
-  };
 
   return (
     <div className="default-container">
@@ -55,7 +62,6 @@ const Steps = () => {
             className={`step-title ${index === currentStep ? "active" : ""} ${
               step.completed ? "completed" : ""
             }`}
-            onClick={() => handleStepClick(index)}
           >
             <span
               className={`step-number ${step.completed ? "completed" : ""}`}

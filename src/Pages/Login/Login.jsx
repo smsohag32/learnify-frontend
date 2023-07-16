@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import EyeIconButton from "../../components/Button/EyeButton";
+import axios from "axios";
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
@@ -23,6 +24,26 @@ const Login = () => {
   const handleLogin = (userInfo) => {
     const email = userInfo.email;
     const password = userInfo.password;
+    axios
+      .post("https://job-task-server.onrender.com/api/v1/user/login", {
+        email,
+        password,
+      })
+      .then((data) => {
+        if (data?.data?.token) {
+          localStorage.setItem("access-token", data.data.token);
+          navigate(from, { replace: true });
+          setLoading(false);
+        } else {
+          // remove to when user not found
+          localStorage.removeItem("access-token");
+          setLoading(false);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
+      });
   };
 
   return (

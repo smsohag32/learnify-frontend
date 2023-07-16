@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 
-const StepOne = ({ onNext }) => {
+const StepOne = ({ onNext, userInfo, setUserInfo }) => {
   const {
     register,
     handleSubmit,
@@ -8,7 +8,8 @@ const StepOne = ({ onNext }) => {
     reset,
   } = useForm();
 
-  const handleRegister = (userInfo) => {
+  const handleRegister = (information) => {
+    setUserInfo(information);
     onNext();
   };
 
@@ -21,17 +22,17 @@ const StepOne = ({ onNext }) => {
               Full Name
             </label>
             <input
-              {...register("name", {
+              {...register("full_name", {
                 required: "This Field is required *",
               })}
               type="text"
-              name="name"
-              placeholder="Enter your name"
+              name="full_name"
+              placeholder="Enter your full name"
               className="primary-input"
             />
-            {errors?.name && (
+            {errors?.full_name && (
               <span className="text-red-600 block text-sm">
-                <small>{errors.name?.message}</small>
+                <small>{errors.full_name?.message}</small>
               </span>
             )}
           </div>
@@ -70,7 +71,7 @@ const StepOne = ({ onNext }) => {
               })}
             >
               <option value="student">Student</option>
-              <option value="Dr">Teacher</option>
+              <option value="teacher">Teacher</option>
             </select>
             {errors?.email && (
               <span className="text-red-600 block text-sm">
@@ -150,12 +151,12 @@ const StepOne = ({ onNext }) => {
             <select
               className="primary-input"
               defaultValue={""}
-              {...register("type", {
+              {...register("work_time", {
                 required: "This Field is required *",
               })}
             >
-              <option value="Full Time">Full Time</option>
-              <option value="Part Time">Part Time</option>
+              <option value="full_time">Full Time</option>
+              <option value="part_time">Part Time</option>
             </select>
             {errors?.type && (
               <span className="text-red-600 block text-sm">

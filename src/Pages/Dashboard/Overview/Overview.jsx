@@ -5,9 +5,12 @@ import Spinner from "../../../components/Spinner/Spinner";
 import StaticCard from "../../../components/Cards/StaticCard";
 import Chart from "../../../components/Chart/Chart";
 import moment from "moment/moment";
+import { useContext } from "react";
+import { PositionContext } from "../../../Context/PositionProvider";
 
 const Overview = () => {
   const { secureAuth } = useSecureAuth();
+  const { position } = useContext(PositionContext);
   const { loading } = useUser();
   const { data: overviewData = [], isLoading: oLoading } = useQuery({
     queryKey: ["overviewData"],
@@ -39,13 +42,15 @@ const Overview = () => {
           />
         ))}
       </div>
-      <div className="my-6 primary-shadow p-4">
-        <h4 className="font-bold text-lg">Your Daily Progress</h4>
-        <p className="text-xs font-semibold">
-          {moment().format("MMMM Do YYYY")}
-        </p>
-        <Chart chartData={chartData} />
-      </div>
+      {position === "student" && (
+        <div className="my-6 primary-shadow p-4">
+          <h4 className="font-bold text-lg">Your Daily Progress</h4>
+          <p className="text-xs font-semibold">
+            {moment().format("MMMM Do YYYY")}
+          </p>
+          <Chart chartData={chartData} />
+        </div>
+      )}
     </div>
   );
 };

@@ -1,14 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { GrLogout } from "react-icons/gr";
 import { AiOutlineMenuFold } from "react-icons/ai";
 import useUser from "../../Hooks/useUser";
 import TeacherLink from "./TeacherLink";
 import StudentLink from "./StudentLink";
+import { PositionContext } from "../../Context/PositionProvider";
 
 const Sidebar = () => {
-  const { user } = useUser();
-  console.log(user);
+  const { position } = useContext(PositionContext);
   const [isOpen, setIsOpen] = useState("false");
   const isTeacher = false;
   // Sidebar Responsive Handler
@@ -51,7 +51,10 @@ const Sidebar = () => {
           </div>
           {/* Nav link */}
           <div className="flex flex-col justify-between flex-1 mt-6">
-            <nav>{isTeacher ? <TeacherLink /> : <StudentLink />}</nav>
+            <nav>
+              {position === "teacher" && <TeacherLink />}
+              {position === "student" && <StudentLink />}
+            </nav>
           </div>
         </div>
       </div>

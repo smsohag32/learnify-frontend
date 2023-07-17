@@ -1,6 +1,7 @@
 // UserProvider.js
 import { createContext, useEffect, useState, useContext } from "react";
 import useSecureAuth from "../Hooks/useSecureAuth";
+import Spinner from "../components/Spinner/Spinner";
 
 export const UserContext = createContext();
 
@@ -32,7 +33,7 @@ const UserProvider = ({ children }) => {
   };
   return (
     <UserContext.Provider value={authInfo}>
-      {loading ? <div>Loading...</div> : children}
+      {loading ? <Spinner /> : children}
     </UserContext.Provider>
   );
 };

@@ -1,27 +1,26 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import EyeIconButton from "../../components/Button/EyeButton";
 import axios from "axios";
+import IconSpin from "../../components/Spinner/IconSpin";
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
   const [isShow, setIsShow] = useState(false);
-
   const [loginErr, setLoginErr] = useState("");
   const navigate = useNavigate();
-  const location = useLocation();
-  const from = location?.state?.from?.pathname || "/dashboard";
   // react hook form
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
   } = useForm();
 
   // handle to login user
   const handleLogin = (userInfo) => {
+    setLoading(true);
+    setLoginErr("");
     const email = userInfo.email;
     const password = userInfo.password;
     axios
@@ -30,11 +29,10 @@ const Login = () => {
         password,
       })
       .then((data) => {
-        console.log(data.data);
         if (data?.data?.data?.token) {
           localStorage.setItem("access-token", data.data.data.token);
           localStorage.setItem("position", data.data.data.position);
-          navigate(from, { replace: true });
+          navigate("/dashboard");
           setLoading(false);
         } else {
           // remove to when user not found
@@ -44,8 +42,8 @@ const Login = () => {
         }
       })
       .catch((err) => {
-        console.log(err);
         setLoading(false);
+        setLoginErr(err?.message);
       });
   };
 
@@ -102,7 +100,7 @@ const Login = () => {
               type="submit"
               className="primary-btn w-full mx-auto"
             >
-              Log in
+              {loading ? <IconSpin /> : "Login"}
             </button>
           </form>
           {loginErr && (

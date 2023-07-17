@@ -2,9 +2,12 @@ import { useForm } from "react-hook-form";
 import EyeIconButton from "../../components/Button/EyeButton";
 import { useState } from "react";
 import userRegister from "../../utils/userRegister";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import IconSpin from "../../components/Spinner/IconSpin";
 
+// step two user register
 const StepTwo = ({ onNext, userInfo }) => {
+  const navigate = useNavigate();
   const [isShow, setIsShow] = useState(false);
   const [registerErr, setRegisterErr] = useState("");
   const [loading, setLoading] = useState(false);
@@ -37,6 +40,7 @@ const StepTwo = ({ onNext, userInfo }) => {
           if (data?.data?.data?.token) {
             localStorage.setItem("access-token", data.data.data.token);
             localStorage.setItem("position", data.data.data.position);
+            navigate("/dashboard");
             setLoading(false);
           } else {
             // remove to when user not found
@@ -108,8 +112,12 @@ const StepTwo = ({ onNext, userInfo }) => {
             </p>
           </div>
         )}
-        <button type="submit" className="primary-btn w-full mt-6 mx-auto">
-          Next
+        <button
+          disabled={loading}
+          type="submit"
+          className="primary-btn w-full mt-6 mx-auto"
+        >
+          {loading ? <IconSpin /> : "Next"}
         </button>
       </form>
     </div>

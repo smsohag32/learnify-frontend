@@ -73,7 +73,11 @@ const StepTwo = ({ onNext, userInfo }) => {
             placeholder="Enter new password"
             className="primary-input"
           />
-          <EyeIconButton isShow={isShow} setIsShow={setIsShow} />
+          <EyeIconButton
+            isShow={isShow}
+            isError={errors?.password}
+            setIsShow={setIsShow}
+          />
           {errors?.password && (
             <span className="text-red-600 block text-sm">
               <small>{errors.password?.message}</small>
@@ -95,7 +99,11 @@ const StepTwo = ({ onNext, userInfo }) => {
             placeholder="Enter new password"
             className="primary-input"
           />
-          <EyeIconButton isShow={isShow} setIsShow={setIsShow} />
+          <EyeIconButton
+            isError={errors?.confirm_password}
+            isShow={isShow}
+            setIsShow={setIsShow}
+          />
           {errors?.confirm_password && (
             <span className="text-red-600 block text-sm">
               <small>{errors.confirm_password?.message}</small>

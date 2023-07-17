@@ -17,7 +17,7 @@ const PositionProvider = ({ children }) => {
   }, []);
 
   return (
-    <PositionContext.Provider value={{ position }}>
+    <PositionContext.Provider value={{ position, loading }}>
       {children}
     </PositionContext.Provider>
   );

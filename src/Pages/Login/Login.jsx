@@ -88,7 +88,11 @@ const Login = () => {
                 placeholder="Enter password"
                 className="primary-input"
               />
-              <EyeIconButton isShow={isShow} setIsShow={setIsShow} />
+              <EyeIconButton
+                isShow={isShow}
+                isError={errors?.password}
+                setIsShow={setIsShow}
+              />
               {errors?.password && (
                 <span className="text-red-600 block text-sm">
                   <small>{errors.password?.message}</small>

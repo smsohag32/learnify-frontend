@@ -3,10 +3,10 @@ import MainLayout from "../Layouts/MainLayout";
 import DashboardLayout from "../Layouts/DashboardLayout";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
-import PrivateRoute from "./PrivateRoute";
 import Courses from "../Pages/Dashboard/Courses/Courses";
 import Account from "../Pages/Dashboard/Account/Account";
 import Overview from "../Pages/Dashboard/Overview/Overview";
+import AddCourse from "../Pages/Dashboard/AddCourse/AddCourse";
 
 const router = createBrowserRouter([
   {
@@ -24,12 +24,8 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "dashboard",
-    element: (
-      <PrivateRoute>
-        <DashboardLayout />
-      </PrivateRoute>
-    ),
+    path: "/dashboard",
+    element: <DashboardLayout />,
     children: [
       {
         path: "/dashboard",
@@ -38,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/courses",
         element: <Courses />,
+      },
+      {
+        path: "/dashboard/courses",
+        element: <AddCourse />,
       },
       {
         path: "/dashboard/account",

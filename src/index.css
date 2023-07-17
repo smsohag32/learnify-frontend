@@ -6,6 +6,7 @@ body{
   @apply bg-[#F7F9FA]
 }
 
+/* custom css class */
 
 .default-container{
   @apply max-w-[2520px] w-full mx-auto xl:px-20 md:px-10 sm:px-2 px-4
@@ -43,4 +44,8 @@ body{
     box-shadow: 0 4px 6px -1px rgba(24, 138, 186, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     border-radius: 8px;
     padding: 16px;
+}
+
+.primary-bg{
+  @apply bg-[#00a8e8]
 }

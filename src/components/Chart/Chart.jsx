@@ -7,6 +7,7 @@ import {
   Tooltip,
 } from "recharts";
 
+// if no data found render this data
 const data = [
   { dayName: "Thursday" },
   { dayName: "Friday" },
@@ -18,7 +19,6 @@ const data = [
 ];
 
 const Chart = ({ chartData }) => {
-  console.log(chartData);
   return (
     <div className="max-w-7xl mx-auto">
       <div className="w-full overflow-x-auto">

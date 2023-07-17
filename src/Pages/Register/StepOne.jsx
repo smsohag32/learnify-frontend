@@ -1,13 +1,14 @@
 import { useForm } from "react-hook-form";
 
-const StepOne = ({ onNext, userInfo, setUserInfo }) => {
+const StepOne = ({ onNext, setUserInfo }) => {
+  //  hook form
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
   } = useForm();
 
+  // handle register to next step store information in a state
   const handleRegister = (information) => {
     setUserInfo(information);
     onNext();
@@ -65,7 +66,6 @@ const StepOne = ({ onNext, userInfo, setUserInfo }) => {
             </label>
             <select
               className="primary-input"
-              defaultValue={""}
               {...register("position", {
                 required: "This Field is required *",
               })}
@@ -87,7 +87,6 @@ const StepOne = ({ onNext, userInfo, setUserInfo }) => {
             </label>
             <select
               className="primary-input"
-              defaultValue={"Select Institute Name"}
               {...register("institution_name", {
                 required: "This Field is required *",
               })}

@@ -15,7 +15,7 @@ const StudentLink = () => {
   return (
     <>
       <NavLink
-        to="/dashboard"
+        to="/dashboard/"
         className={({ isActive }) =>
           `flex items-center px-4 py-2 mt-5 duration-300 transform ${
             isActive ? "active-link" : "primary-link"
@@ -37,7 +37,7 @@ const StudentLink = () => {
         <span className="mx-4 font-medium">Courses</span>
       </NavLink>
       <NavLink
-        to="/dashboard/courses"
+        to="/dashboard/account"
         className={({ isActive }) =>
           `flex items-center px-4 py-2 mt-5 duration-300 transform ${
             isActive ? "active-link" : "primary-link"

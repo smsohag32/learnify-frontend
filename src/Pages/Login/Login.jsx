@@ -49,7 +49,7 @@ const Login = () => {
 
   return (
     <div className="flex items-center h-[calc(100vh-80px)]">
-      <div className="default-container py-9">
+      <div className="default-container my-16">
         <div className="w-full max-w-sm mx-auto p-6 bg-white rounded shadow-md">
           <div className="text-center">
             <h1 className="text-2xl font-semibold mb-4">Welcome to Learnify</h1>

@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import Spinner from "../components/Spinner/Spinner";
 
 export const PositionContext = createContext(null);
 const PositionProvider = ({ children }) => {
@@ -18,7 +19,7 @@ const PositionProvider = ({ children }) => {
 
   return (
     <PositionContext.Provider value={{ position, loading }}>
-      {children}
+      {loading ? <Spinner /> : children}
     </PositionContext.Provider>
   );
 };

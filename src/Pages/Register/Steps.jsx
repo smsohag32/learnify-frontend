@@ -54,8 +54,8 @@ const Steps = () => {
   ];
 
   return (
-    <div className="default-container">
-      <div className="step-titles">
+    <div className="default-container my-8">
+      <div className="step-titles mb-6">
         {steps.map((step, index) => (
           <div
             key={index}

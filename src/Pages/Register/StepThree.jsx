@@ -5,7 +5,7 @@ const StepThree = () => {
   const navigate = useNavigate();
   // handle to confirmation
   const handleConfirmation = () => {
-    navigate("/dashboard");
+    navigate("/");
   };
   return (
     <div className="w-full max-w-xl p-6 mx-auto bg-white rounded shadow-md">
@@ -14,13 +14,13 @@ const StepThree = () => {
           <div className="md:w-[250px] mx-auto">
             <Lottie animationData={successImage} loop={true} width={100} />
             <p className="text-gray-500">
-              Account Has Been Created. Enjoy Job Task.
+              Account Has Been Created. Login now.
             </p>
           </div>
         </div>
         <div className="text-center mt-6">
           <button className="outline-btn" onClick={handleConfirmation}>
-            Go to Home
+            Go To Login Page
           </button>
         </div>
       </div>

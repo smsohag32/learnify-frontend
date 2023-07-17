@@ -37,22 +37,17 @@ const StepTwo = ({ onNext, userInfo }) => {
 
       userRegister(userData)
         .then((data) => {
-          if (data?.data?.data?.token) {
-            localStorage.setItem("access-token", data.data.data.token);
-            localStorage.setItem("position", data.data.data.position);
-            navigate("/dashboard");
+          console.log(data);
+          if (data) {
             setLoading(false);
+            onNext();
           } else {
-            // remove to when user not found
-            localStorage.removeItem("access-token");
-            localStorage.removeItem("position");
             setLoading(false);
           }
-          onNext();
         })
         .catch((err) => {
           console.log(err);
-          setRegisterErr(err?.message);
+          setRegisterErr(err?.response?.data?.error);
         });
     }
   };

@@ -5,7 +5,6 @@ import userPhoto from "../../assets/user/user.png";
 import { useContext, useState } from "react";
 import { PositionContext } from "../../Context/PositionProvider";
 import { AiOutlineDown } from "react-icons/ai";
-
 const DashboardHeader = () => {
   const { user } = useUser();
   const { position } = useContext(PositionContext);

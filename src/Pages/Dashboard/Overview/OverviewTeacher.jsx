@@ -22,7 +22,7 @@ const OverviewTeacher = () => {
     },
   });
 
-  if (oLoading) {
+  if (oLoading || loading) {
     return <Spinner />;
   }
 

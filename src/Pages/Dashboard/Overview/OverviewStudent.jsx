@@ -29,7 +29,7 @@ const OverviewStudent = () => {
     },
   });
 
-  if (oLoading || cLoading) {
+  if (oLoading || cLoading || loading) {
     return <Spinner />;
   }
 

@@ -27,6 +27,8 @@ const useSecureAuth = () => {
           (err.response.status === 500 || err.response.status === 403)
         ) {
           navigate("/");
+          localStorage.removeItem("access-token");
+          localStorage.removeItem("position");
         }
         return Promise.reject(err);
       }

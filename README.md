@@ -4,7 +4,7 @@ Learnify is an online learning academy where students can buy courses, and teach
 
 ## Live Demo
 
-Check out the live demo of Learnify [here](https://www.learnify.com)
+Check out the live demo of Learnify [here](https://learnify-sm.netlify.app/)
 
 ## Features
 

@@ -37,7 +37,6 @@ const StepTwo = ({ onNext, userInfo }) => {
 
       userRegister(userData)
         .then((data) => {
-          console.log(data);
           if (data) {
             setLoading(false);
             onNext();
@@ -46,7 +45,6 @@ const StepTwo = ({ onNext, userInfo }) => {
           }
         })
         .catch((err) => {
-          console.log(err);
           setRegisterErr(err?.response?.data?.error);
         });
     }

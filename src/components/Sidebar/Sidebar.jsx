@@ -1,8 +1,5 @@
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { GrLogout } from "react-icons/gr";
 import { AiOutlineMenuFold } from "react-icons/ai";
-import useUser from "../../Hooks/useUser";
 import TeacherLink from "./TeacherLink";
 import StudentLink from "./StudentLink";
 import { PositionContext } from "../../Context/PositionProvider";
@@ -10,7 +7,6 @@ import { PositionContext } from "../../Context/PositionProvider";
 const Sidebar = () => {
   const { position } = useContext(PositionContext);
   const [isOpen, setIsOpen] = useState("false");
-  const isTeacher = false;
   // Sidebar Responsive Handler
   const handleToggle = () => {
     setIsOpen(!isOpen);

@@ -32,7 +32,12 @@ const Login = () => {
         if (data?.data?.data?.token) {
           localStorage.setItem("access-token", data.data.data.token);
           localStorage.setItem("position", data.data.data.position);
-          navigate("/dashboard");
+          if (data.data.data.position === "teacher") {
+            navigate("/dashboard/teacher");
+          } else if (data.data.data.position === "student") {
+            navigate("/dashboard/student");
+            setLoading(false);
+          }
           setLoading(false);
         } else {
           // remove to when user not found

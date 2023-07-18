@@ -5,8 +5,9 @@ import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import Courses from "../Pages/Dashboard/Courses/Courses";
 import Account from "../Pages/Dashboard/Account/Account";
-import Overview from "../Pages/Dashboard/Overview/Overview";
 import AddCourse from "../Pages/Dashboard/AddCourse/AddCourse";
+import OverviewStudent from "../Pages/Dashboard/Overview/OverviewStudent";
+import OverviewTeacher from "../Pages/Dashboard/Overview/OverviewTeacher";
 
 const router = createBrowserRouter([
   {
@@ -28,8 +29,12 @@ const router = createBrowserRouter([
     element: <DashboardLayout />,
     children: [
       {
-        path: "/dashboard",
-        element: <Overview />,
+        path: "/dashboard/student",
+        element: <OverviewStudent />,
+      },
+      {
+        path: "/dashboard/teacher",
+        element: <OverviewTeacher />,
       },
       {
         path: "/dashboard/courses",

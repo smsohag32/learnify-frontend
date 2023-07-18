@@ -4,7 +4,7 @@ import Spinner from "../../../components/Spinner/Spinner";
 const Courses = () => {
   // load data using to custom hooks
   const { coursesData, cLoading } = useCourses();
-  console.log(coursesData);
+
   if (cLoading) {
     return <Spinner />;
   }

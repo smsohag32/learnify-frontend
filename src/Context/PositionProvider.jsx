@@ -8,7 +8,6 @@ const PositionProvider = ({ children }) => {
   useEffect(() => {
     setLoading(true);
     const userPosition = localStorage.getItem("position");
-    console.log(userPosition);
     if (userPosition) {
       setPosition(userPosition);
       setLoading(false);

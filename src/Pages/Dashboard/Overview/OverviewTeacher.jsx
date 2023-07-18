@@ -8,10 +8,11 @@ import moment from "moment/moment";
 import { useContext } from "react";
 import { PositionContext } from "../../../Context/PositionProvider";
 
-const Overview = () => {
+const OverviewTeacher = () => {
   const { secureAuth } = useSecureAuth();
   const { position } = useContext(PositionContext);
   const { loading } = useUser();
+
   const { data: overviewData = [], isLoading: oLoading } = useQuery({
     queryKey: ["overviewData"],
     enabled: !loading,
@@ -20,17 +21,11 @@ const Overview = () => {
       return res.data.statics;
     },
   });
-  const { data: chartData = [], isLoading: cLoading } = useQuery({
-    queryKey: ["chartData"],
-    enabled: !loading,
-    queryFn: async () => {
-      const res = await secureAuth.post(`/api/v1/dashboard/chart`);
-      return res.data?.progress;
-    },
-  });
-  if (oLoading || cLoading) {
+
+  if (oLoading) {
     return <Spinner />;
   }
+
   return (
     <div>
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
@@ -48,11 +43,10 @@ const Overview = () => {
           <p className="text-xs font-semibold">
             {moment().format("MMMM Do YYYY")}
           </p>
-          <Chart chartData={chartData} />
         </div>
       )}
     </div>
   );
 };
 
-export default Overview;
+export default OverviewTeacher;
